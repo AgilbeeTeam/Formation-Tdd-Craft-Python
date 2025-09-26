@@ -1,0 +1,40 @@
+FRANÇAIS
+---------
+
+Ce code est fourni exclusivement dans le cadre des formations animées par
+Nicolas DELAHAYE, Consultant Indépendant, pour le compte de la société Agilbee, notamment :
+- Développement Agile (AI Driven)
+- Architecte Logiciel avec DDD
+- Architectures et AI-Driven
+- Accélérer vos développements logiciels avec l’intelligence artificielle
+- Test Driven Development (TDD)
+
+Conditions d’utilisation :
+1. Utilisation autorisée uniquement par les participants inscrits à ces formations.
+2. Utilisation strictement pédagogique : ce code ne doit pas être utilisé en production ou dans un projet professionnel.
+3. Modification autorisée pour un usage personnel et dans le cadre des exercices de formation.
+4. Redistribution, partage public ou commercialisation interdits.
+5. Ce code est fourni “tel quel”, sans aucune garantie d’adaptation à un usage particulier.
+
+En téléchargeant, copiant ou utilisant ce code, vous acceptez ces conditions.
+
+
+ENGLISH
+--------
+
+This code is provided exclusively as part of the training programs delivered by
+Nicolas DELAHAYE, Independent Consultant, on behalf of Agilbee, including:
+- Agile Development (AI Driven)
+- Software Architecture with DDD
+- Architectures and AI-Driven
+- Accelerating Software Development with Artificial Intelligence
+- Test Driven Development (TDD)
+
+Terms of use:
+1. Use is permitted only by registered participants of these training sessions.
+2. Educational use only: this code must not be used in production or for any professional project.
+3. Modification is allowed for personal use and training exercises.
+4. Redistribution, public sharing or commercialization is prohibited.
+5. This code is provided “as is”, without any warranty of fitness for a particular purpose.
+
+By downloading, copying, or using this code, you agree to these terms.

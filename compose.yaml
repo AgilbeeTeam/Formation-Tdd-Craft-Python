@@ -1,0 +1,86 @@
+# Comments are provided throughout this file to help you get started.
+# If you need more help, visit the Docker compose reference guide at
+# https://docs.docker.com/compose/compose-file/
+
+# Here the instructions define your application as two services called "todo-app" and “todo-database”
+# The service “todo-app” is built from the Dockerfile in the /app directory,
+# and the service “todo-database” uses the official MongoDB image 
+# from Docker Hub - https://hub.docker.com/_/mongo. 
+# You can add other services your application may depend on here.
+
+services:
+  mongo:
+      image: mongo
+      restart: always
+      environment:
+        MONGO_INITDB_ROOT_USERNAME: root
+        MONGO_INITDB_ROOT_PASSWORD: example
+
+  mongo-express:
+    image: mongo-express
+    restart: always
+    ports:
+      - 8081:8081
+    environment:
+      ME_CONFIG_MONGODB_URL: mongodb://root:example@mongo:27017/
+      ME_CONFIG_BASICAUTH_ENABLED: true
+      ME_CONFIG_BASICAUTH_USERNAME: mongoexpressuser
+      ME_CONFIG_BASICAUTH_PASSWORD: mongoexpresspass
+
+  vuejs-prod:
+    build:
+      context: ./vuejs/
+      dockerfile: Dockerfile
+    image: formation-tdd-ligne-rouge-vuejs
+    ports:
+      - "8080:8080"
+
+  vuejs-dev:
+    build:
+      context: ./vuejs/
+      dockerfile: Dockerfile.dev
+    ports:
+      - "5173:5173"
+    develop:
+      watch:
+        - path: ./vuejs/src
+          target: /app/src
+          action: sync
+        - path: ./vuejs/package.json
+          target: /app/package.json
+          action: restart
+        - path: ./vuejs/vite.config.js
+          target: /app/vite.config.js
+          action: restart
+
+  vuejs-test:
+    build:
+      context: ./vuejs/
+      dockerfile: Dockerfile.dev
+    command: ["npm", "run", "test:unit"]
+
+  api-prod:
+    build:
+      context: ./api/
+      dockerfile: Dockerfile
+    image: formation-tdd-ligne-rouge-fastapi
+    ports:
+      - "8081:8081"
+
+  api-dev:
+    build:
+      context: ./api/
+      dockerfile: Dockerfile
+    ports:
+      - "5172:5172"
+    develop:
+      watch:
+        - path: ./api/app
+          target: /app
+          action: sync
+        - path: ./api/requirement.txt
+          target: /app/requirement.txt
+          action: restart
+        - path: ./api/app/main.py
+          target: /app/main.py
+          action: restart
