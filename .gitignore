@@ -32,3 +32,5 @@ pnpm-debug.log*
 .DS_Store
 /api/test/.approval_tests_temp/
 /database/mongodb-data/
+/api/test/tests/approved_files/test_gilded_rose_approvals.test_gilded_rose_approvals.received.txt
+/api/test/tests/approved_files/test_gilded_rose_approvals.test_gilded_rose_approvals.approved.txt
