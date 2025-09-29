@@ -1,13 +1,30 @@
+import logging
+
 from behave import given, when, then
 
-@given("je suis en train d'établir le budget de mon mariage")
-def step_given_obtenir_un_devis(context):
-   return
+from pymongo_get_database import get_database
+from gilded_rose import Item, GildedRose
 
-@when("je loue la salle le {jour_mariage_str}, pour {nb_adultes_vdh:d} personnes au vin d'honneur, dont {enfants_vdh:d} enfants et ado, {nb_adultes_repas:d} personnes au repas dont {nb_enfants_repas:d} enfants de moins de 12 ans")
-def step_when_obtenir_un_devis(context, jour_mariage_str, nb_adultes_vdh, enfants_vdh, nb_adultes_repas, nb_enfants_repas):
-    context.result = 17837
 
-@then("le devis doit être de {expected:d} €")
-def step_then_obtenir_un_devis(context, expected):
-    assert context.result == expected
+@given("je suis à la recherche d'un item pour ma guilde")
+def step_given_items(context):
+    items = []
+    try :
+        for item in get_database().items.find({}) :
+            print("item : " , item)
+            items.append(Item(name=item["name"], sell_in=item["sell_in"], quality=item["quality"]))
+    except Exception as e:
+        print(e)
+        return
+
+    context.result = items
+
+    return
+
+@when("j'appel l'api")
+def step_when_appel_api(context):
+    return
+
+@then("la liste doit être : {expected:d}")
+def step_then_la_liste(context, expected):
+    assert len(context.result) == expected

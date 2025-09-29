@@ -32,25 +32,25 @@ onMounted(async () => {
   <div class="about">
     <h1 class="green">This is an about page</h1>
     <br/>
-    <div v-if="error">Erreur: {{ error }}</div>
-    <div v-else>
-      <table border="1px">
-        <thead>
-          <tr>
-            <th>Name</th><th>Sell_in</th><th>Quality</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr v-for="item in items">
-            <td> {{item.name}} </td>
-            <td> {{item.sell_in}} </td>
-            <td> {{item.quality}} </td>
-          </tr>
-        </tbody>
-      </table>
-
-    </div>
-
+    <h3>
+      <div v-if="error">Erreur: {{ error }}</div>
+      <div v-else>
+        <table border="1px">
+          <thead>
+            <tr>
+              <th>Name</th><th>Sell_in</th><th>Quality</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr v-for="item in items">
+              <td> {{item.name}} </td>
+              <td> {{item.sell_in}} </td>
+              <td> {{item.quality}} </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </h3>
   </div>
 </template>
 

@@ -1,3 +1,5 @@
+import logging
+
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
@@ -7,6 +9,9 @@ from gilded_rose import Item, GildedRose
 
 
 app = FastAPI()
+
+
+logger = logging.getLogger(__name__)
 
 # Définir les origines autorisées (par exemple, localhost:3000 pour développement)
 # @TODO : a externaliser pour que cela soit le Docker de prod qui prend en charge les autorisations.
@@ -31,16 +36,19 @@ def hello_world():
     return {"error": "Hello World"}
 
 @app.get("/message")
-async def get_message():
+def get_message():
     return {"message": "OK, le message provient de FastAPI -- reloaded ?!"}
 
 @app.get("/items")
-async def lister_items():
-    items = []
-    db = get_database()
+def lister_items():
+    try :
+        items = []
+        for item in get_database().items.find({}) :
+            logger.info("item : " + item)
+            items.append(Item(name=item["name"], sell_in=item["sell_in"], quality=item["quality"]))
 
-    for item in db["items"].find():
-        print("item : ", item)
-        items.append(Item(name=item["name"], sell_in=item["sell_in"], quality=item["quality"]))
+        return items
 
-    return items
+    except Exception as e:
+        logger.error(e)
+        raise e

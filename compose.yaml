@@ -7,6 +7,7 @@
 # and the service “todo-database” uses the official MongoDB image 
 # from Docker Hub - https://hub.docker.com/_/mongo. 
 # You can add other services your application may depend on here.
+version : '3'
 
 services:
   mongo:
@@ -78,6 +79,9 @@ services:
       dockerfile: Dockerfile
     ports:
       - "5172:5172"
+    environment:
+      NAME_SERVICE_MONGO: mongo
+      PORT_SERVICE_MONGO: 27017
     develop:
       watch:
         - path: ./api/app

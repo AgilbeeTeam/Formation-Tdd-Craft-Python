@@ -1,10 +1,11 @@
+use("gilderose");
+
 db.createUser({
   user: "dev",
   pwd: "passdev",
+  db: "admin",
   roles: [{ role: "readWrite", db: "gilderose" }]
 });
-
-use('gilderose');
 
 db.createCollection("items");
 

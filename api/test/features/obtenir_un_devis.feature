@@ -1,5 +1,5 @@
 Feature: CRUD Item - Test API
-Scenario: recherche d'un itemp
+Scenario: lister les items
   Given je suis à la recherche d'un item pour ma guilde
-  When je recherche de l'item X
-  Then {}
+  When j'appel l'api
+  Then la liste doit être : 9
