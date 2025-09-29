@@ -30,7 +30,7 @@ services:
     #   db:
     #     image: postgres
     #     restart: always
-    #     user: postgres
+    #     init-mongo.js: postgres
     #     secrets:
     #       - db-password
     #     volumes:

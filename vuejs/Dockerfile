@@ -28,7 +28,7 @@ RUN npm run build
 
 FROM nginxinc/nginx-unprivileged:${NGINX_VERSION} AS runner
 
-# Use a built-in non-root user for security best practices
+# Use a built-in non-root init-mongo.js for security best practices
 USER nginx
 
 # Copy custom Nginx config

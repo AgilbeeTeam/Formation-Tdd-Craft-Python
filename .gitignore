@@ -30,3 +30,5 @@ pnpm-debug.log*
 
 # macOS
 .DS_Store
+/api/test/.approval_tests_temp/
+/database/mongodb-data/

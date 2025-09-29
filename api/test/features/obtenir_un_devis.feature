@@ -1,5 +1,5 @@
-Feature: Obtenir un devis
-Scenario: Le devis avec seulement les éléments obligatoires
-  Given je suis en train d'établir le budget de mon mariage
-  When je loue la salle le 15 aout 2026, pour 125 personnes au vin d'honneur, dont 30 enfants et ado, 37 personnes au repas dont 13 enfants de moins de 12 ans
-  Then le devis doit être de 17837 €
+Feature: CRUD Item - Test API
+Scenario: recherche d'un itemp
+  Given je suis à la recherche d'un item pour ma guilde
+  When je recherche de l'item X
+  Then {}

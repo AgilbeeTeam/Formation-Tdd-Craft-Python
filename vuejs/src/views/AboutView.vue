@@ -2,31 +2,55 @@
 import { ref, onMounted } from 'vue';
 import apiClient from '@/modules/api';
 
-const message = ref<string | null>(null);
-const errorMessage = ref<string | null>(null);
+const items = ref([])
+const isLoading = ref(false)
+const error = ref(null)
+
 
 const fetch_message = async () => {
+  isLoading.value = true
   try {
-    const response = await apiClient.get('/message');
+    const response = await apiClient.get('/items');
     console.log(response);
-    message.value = response.data.message;
-  } catch (error) {
-    errorMessage.value = 'Erreur lors de la récupération des info de l\'api.';
+    items.value = await response.data.message
+  } catch (err) {
+    error.value = err.message
     console.error(error);
+  } finally {
+    isLoading.value = false
   }
 };
-onMounted(() => {
-  fetch_message();
+
+onMounted(async () => {
+ fetch_message();
 });
 
 </script>
+
 
 <template>
   <div class="about">
     <h1 class="green">This is an about page</h1>
     <br/>
-    Message: <p v-if="errorMessage">{{ errorMessage }}</p>
-    <p>{{ message }}</p>
+    <div v-if="error">Erreur: {{ error }}</div>
+    <div v-else>
+      <table border="1px">
+        <thead>
+          <tr>
+            <th>Name</th><th>Sell_in</th><th>Quality</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr v-for="item in items">
+            <td> {{item.name}} </td>
+            <td> {{item.sell_in}} </td>
+            <td> {{item.quality}} </td>
+          </tr>
+        </tbody>
+      </table>
+
+    </div>
+
   </div>
 </template>
 

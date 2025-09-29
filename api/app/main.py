@@ -1,6 +1,11 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
+from pymongo_get_database import get_database
+
+from gilded_rose import Item, GildedRose
+
+
 app = FastAPI()
 
 # Définir les origines autorisées (par exemple, localhost:3000 pour développement)
@@ -26,5 +31,16 @@ def hello_world():
     return {"error": "Hello World"}
 
 @app.get("/message")
-def get_message():
+async def get_message():
     return {"message": "OK, le message provient de FastAPI -- reloaded ?!"}
+
+@app.get("/items")
+async def lister_items():
+    items = []
+    db = get_database()
+
+    for item in db["items"].find():
+        print("item : ", item)
+        items.append(Item(name=item["name"], sell_in=item["sell_in"], quality=item["quality"]))
+
+    return items
