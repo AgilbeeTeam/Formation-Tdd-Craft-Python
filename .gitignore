@@ -23,7 +23,6 @@ pnpm-debug.log*
 # Environment variables
 .venv
 .venv.*
-.env
 .env.*
 !.env.example
 !.venv.example
@@ -31,6 +30,7 @@ pnpm-debug.log*
 # macOS
 .DS_Store
 /api/test/.approval_tests_temp/
-/database/mongodb-data/
 /api/test/tests/approved_files/test_gilded_rose_approvals.test_gilded_rose_approvals.received.txt
 /api/test/tests/approved_files/test_gilded_rose_approvals.test_gilded_rose_approvals.approved.txt
+/django_ui/db.sqlite3
+/django_ui/polls

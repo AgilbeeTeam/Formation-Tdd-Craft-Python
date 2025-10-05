@@ -5,11 +5,8 @@ from pymongo import MongoClient
 #URL_MONGO_DB = "mongodb://dev:passdev@localhost:27017/?tls=false"
 import os
 
-if 'NAME_SERVICE_MONGO' in os.environ and os.environ['PORT_SERVICE_MONGO'] in os.environ:
-    URL_MONGO_DB = "mongodb://dev:passdev@"+os.environ['NAME_SERVICE_MONGO']+":" + os.environ['PORT_SERVICE_MONGO']
-else:
-    print("La variable n'existe pas")
-    URL_MONGO_DB = "mongodb://dev:passdev@localhost:27017"
+
+URL_MONGO_DB = os.getenv("MONGO_URL", "mongodb://dev:passdev@localhost:27017")
 
 
 def get_database() :

@@ -1,11 +1,13 @@
-use("gilderose");
+// Besoin de s'authentifier ici ...
+db.getSiblingDB('admin').auth(process.env.MONGO_INITDB_ROOT_USERNAME, process.env.MONGO_INITDB_ROOT_PASSWORD);
 
 db.createUser({
-  user: "dev",
-  pwd: "passdev",
-  db: "admin",
-  roles: [{ role: "readWrite", db: "gilderose" }]
+  user: process.env.MONGO_USER,
+  pwd: process.env.MONGO_PASSWORD,
+  roles: [{ role: "readWrite", db: process.env.MONGO_DB }]
 });
+
+db = db.getSiblingDB(process.env.MONGO_DB);
 
 db.createCollection("items");
 

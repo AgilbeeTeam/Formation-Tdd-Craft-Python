@@ -2,51 +2,47 @@
 # If you need more help, visit the Docker compose reference guide at
 # https://docs.docker.com/compose/compose-file/
 
-# Here the instructions define your application as two services called "todo-app" and “todo-database”
-# The service “todo-app” is built from the Dockerfile in the /app directory,
-# and the service “todo-database” uses the official MongoDB image 
+# Here the instructions define your application as two services called "api" and “database”
+# The service “api” is built from the Dockerfile in the /app directory,
+# and the service “database (aka db)” uses the official MongoDB image
 # from Docker Hub - https://hub.docker.com/_/mongo. 
 # You can add other services your application may depend on here.
-version : '3'
 
 services:
-  mongo:
-      image: mongo
-      restart: always
-      ports:
-        - "27017:27017"
-      environment:
-        MONGO_INITDB_ROOT_USERNAME: root
-        MONGO_INITDB_ROOT_PASSWORD: example
-      volumes:
-        - ./database/mongodb-data:/data/db
-        - ./database/init-mongo.js:/docker-entrypoint-initdb.d/init-mongo.js
+  db:
+    image: mongo
+    restart: always
+    ports:
+      - "27017:27017"
+    env_file: [ .tdd_env ]
+    volumes:
+      - ./database/init-mongo.js:/docker-entrypoint-initdb.d/init-mongo.js:ro
+    networks:
+      network_db:
+        aliases:
+          - db
 
-  mongo-express:
+  db-ui:
     image: mongo-express
     restart: always
     ports:
       - 8081:8081
-    environment:
-      ME_CONFIG_MONGODB_URL: mongodb://root:example@mongo:27017/
-      ME_CONFIG_BASICAUTH_ENABLED: true
-      ME_CONFIG_BASICAUTH_USERNAME: mongoexpressuser
-      ME_CONFIG_BASICAUTH_PASSWORD: mongoexpresspass
+    env_file: [ .tdd_env ]
+    depends_on:
+      - db
+    networks:
+      network_db:
+          aliases:
+            - db-ui
 
-  vuejs-prod:
-    build:
-      context: ./vuejs/
-      dockerfile: Dockerfile
-    image: formation-tdd-ligne-rouge-vuejs
-    ports:
-      - "8080:8080"
-
-  vuejs-dev:
+  vuejs-ui:
     build:
       context: ./vuejs/
       dockerfile: Dockerfile.dev
     ports:
       - "5173:5173"
+    depends_on:
+      - api
     develop:
       watch:
         - path: ./vuejs/src
@@ -54,34 +50,28 @@ services:
           action: sync
         - path: ./vuejs/package.json
           target: /app/package.json
-          action: restart
+          action: sync+restart
         - path: ./vuejs/vite.config.js
           target: /app/vite.config.js
-          action: restart
+          action: sync+restart
+    networks:
+      network_api:
+          aliases:
+            - ui
 
-  vuejs-test:
+  ui-test:
     build:
       context: ./vuejs/
       dockerfile: Dockerfile.dev
     command: ["npm", "run", "test:unit"]
 
-  api-prod:
+  api:
     build:
       context: ./api/
       dockerfile: Dockerfile
-    image: formation-tdd-ligne-rouge-fastapi
-    ports:
-      - "8081:8081"
-
-  api-dev:
-    build:
-      context: ./api/
-      dockerfile: Dockerfile
+    env_file: [ .tdd_env ]
     ports:
       - "5172:5172"
-    environment:
-      NAME_SERVICE_MONGO: mongo
-      PORT_SERVICE_MONGO: 27017
     develop:
       watch:
         - path: ./api/app
@@ -89,7 +79,60 @@ services:
           action: sync
         - path: ./api/requirement.txt
           target: /app/requirement.txt
-          action: restart
+          action: sync+restart
         - path: ./api/app/main.py
           target: /app/main.py
-          action: restart
+          action: sync+restart
+    depends_on:
+      - db
+    networks:
+      network_db:
+          aliases:
+            - api
+      network_api:
+          aliases:
+            - api
+
+  db-postgresql:
+   image: postgres:latest
+   ports:
+     - "5432:5432"
+   volumes:
+     - postgres_data:/var/lib/postgresql/data
+   env_file: [ .tdd_env ]
+
+  django-web:
+    build:
+      context: ./django_ui/
+      dockerfile: Dockerfile
+    env_file: [ .tdd_env ]
+    ports:
+      - "5174:5174"
+    develop:
+      watch:
+        - path: ./django_ui/
+          target: /app
+          action: sync
+        - path: ./django_ui/requirement.txt
+          target: /app/requirement.txt
+          action: sync+restart
+        - path: ./django_ui/giledrose_shop/
+          target: /app/giledrose_shop
+          action: sync+restart
+    depends_on:
+      - db-postgresql
+    networks:
+      network_web:
+          aliases:
+            - django
+
+networks:
+  network_db:
+    driver: bridge
+  network_api:
+    driver: bridge
+  network_web:
+    driver: bridge
+
+volumes:
+   postgres_data:

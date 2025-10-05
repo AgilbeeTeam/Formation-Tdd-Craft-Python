@@ -12,7 +12,7 @@ const fetch_message = async () => {
   try {
     const response = await apiClient.get('/items');
     console.log(response);
-    items.value = await response.data.message
+    items.value = response.data
   } catch (err) {
     error.value = err.message
     console.error(error);
