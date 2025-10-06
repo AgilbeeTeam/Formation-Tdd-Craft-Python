@@ -25,7 +25,7 @@ SECRET_KEY = os.environ.get("DJANGO_SECRET_KEY", 'django-insecure-mt2r391yv2)sc_
 
 # SECURITY WARNING: don't run with debug turned on in production!
 #DEBUG = True
-DEBUG = bool(os.environ.get("DJANGO_DEBUG_MODE", default=False))
+DEBUG = bool(os.environ.get("DJANGO_DEBUG_MODE", default=True))
 
 #ALLOWED_HOSTS = []
 ALLOWED_HOSTS = os.environ.get("DJANGO_ALLOWED_HOSTS", "127.0.0.1").split(",")
@@ -39,6 +39,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'shop',
+    'heartbeat',
 ]
 
 MIDDLEWARE = [
@@ -56,7 +58,7 @@ ROOT_URLCONF = 'giledrose_shop.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': ["shop/templates",  "templates"],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -84,12 +86,12 @@ WSGI_APPLICATION = 'giledrose_shop.wsgi.application'
 DATABASES = {
      'default': {
          'ENGINE': 'django.db.backends.{}'.format(
-             os.getenv('DATABASE_ENGINE', 'sqlite3')
+             os.getenv('DATABASE_ENGINE', 'postgresql_psycopg2')
          ),
-         'NAME': os.getenv('DATABASE_NAME', 'polls'),
-         'USER': os.getenv('DATABASE_USERNAME', 'myprojectuser'),
-         'PASSWORD': os.getenv('DATABASE_PASSWORD', 'password'),
-         'HOST': os.getenv('DATABASE_HOST', '127.0.0.1'),
+         'NAME': os.getenv('DATABASE_NAME', 'gilderose'),
+         'USER': os.getenv('DATABASE_USERNAME', 'gilderose'),
+         'PASSWORD': os.getenv('DATABASE_PASSWORD', 'gildrose_pass'),
+         'HOST': os.getenv('DATABASE_HOST', 'localhost'),
          'PORT': os.getenv('DATABASE_PORT', 5432),
      }
  }
