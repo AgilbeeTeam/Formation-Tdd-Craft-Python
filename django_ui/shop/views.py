@@ -14,6 +14,7 @@ def index(request):
 
 class ItemsListView(ListView):
     model = Item
+    context_object_name = "items"
     paginate_by = 10  # if pagination is desired
     template_name = "items.html"
     ordering = "name"

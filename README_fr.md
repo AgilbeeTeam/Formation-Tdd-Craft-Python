@@ -19,6 +19,12 @@ La Stack Django, Postgresql
 
     python manage.py migrate
     python manage.py createsuperuser --username=admin --email=admin@example.com
+    python manage.py loaddata catalogue.json
+    
+    python manage.py runserver
+
+Ouvrir la page : http://127.0.0.1:8000/shop/catalogue 
+Vous devez avoir une liste de 9 "items"
 
 ATTENTION n'oubliez de définir un mot de passe (ex : admin)
 

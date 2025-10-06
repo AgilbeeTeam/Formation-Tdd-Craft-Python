@@ -1,0 +1,47 @@
+[
+    {
+        "model": "shop.Item",
+        "pk": 1,
+        "fields": { "name" : "+5 Dexterity Vest", "sell_in" : 10, "quality" : 20 }
+    },
+    {
+        "model": "shop.Item",
+        "pk": 2,
+        "fields": { "name"  : "Aged Brie", "sell_in" : 2, "quality" : 0 }
+    },
+    {
+        "model": "shop.Item",
+        "pk": 3,
+        "fields": { "name"  : "Elixir of the Mongoose", "sell_in" : 5, "quality" : 7 }
+    },
+    {
+        "model": "shop.Item",
+        "pk": 4,
+        "fields": { "name"  : "Sulfuras, Hand of Ragnaros", "sell_in" : 0, "quality" : 80 }
+    },
+    {
+        "model": "shop.Item",
+        "pk": 5,
+        "fields": { "name"  : "Sulfuras, Hand of Ragnaros", "sell_in" : -1, "quality" : 80 }
+    },
+    {
+        "model": "shop.Item",
+        "pk": 6,
+        "fields": { "name"  : "Backstage passes to a TAFKAL80ETC concert", "sell_in" : 15, "quality" : 20 }
+    },
+    {
+        "model": "shop.Item",
+        "pk": 7,
+        "fields": { "name"  : "Backstage passes to a TAFKAL80ETC concert", "sell_in" : 10, "quality" : 49 }
+    },
+    {
+        "model": "shop.Item",
+        "pk": 8,
+        "fields": { "name"  : "Backstage passes to a TAFKAL80ETC concert", "sell_in" : 5, "quality" : 49 }
+    },
+    {
+        "model": "shop.Item",
+        "pk": 9,
+        "fields": { "name"  : "Conjured Mana Cake", "sell_in" : 3, "quality" : 6}
+    }
+]
