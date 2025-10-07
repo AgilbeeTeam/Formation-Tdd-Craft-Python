@@ -1,0 +1,66 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>{% block title %}Boutique{% endblock %}</title>
+
+  <!-- Icônes (Font Awesome) : remplacez par vos SVG si besoin -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+
+  <!-- CSS principal -->
+  <link rel="stylesheet" href="{% static 'css/buyer.css' %}">
+  {% block extra_css %}{% endblock %}
+</head>
+<body>
+
+  <!-- Cadre doré qui englobe toute la page -->
+  <div class="page-frame">
+
+    <!-- Bannière -->
+    <header class="banner"
+            style="background-image: url('{% static "img/bannière-illustration-gilderose.png" %}')"
+            role="img" aria-label="Bannière du site">
+      {% block banner_overlay %}{% endblock %}
+    </header>
+
+    <!-- Menu principal -->
+    <nav class="main-nav" aria-label="Menu principal">
+      <a class="nav-link {% if request.resolver_match.url_name == 'catalog' %}active{% endif %}"
+         href="{% url 'catalogue' %}">
+         <i class="fa-solid fa-book-open" aria-hidden="true"></i>
+         <span>Catalogue</span>
+      </a>
+
+      <a class="nav-link {% if request.resolver_match.url_name == 'cart' %}active{% endif %}"
+         href="{% url 'cart' %}">
+         <i class="fa-solid fa-cart-shopping" aria-hidden="true"></i>
+         <span>Mon panier</span>
+      </a>
+
+      {% comment %}
+        Si vous utilisez django-allauth ou auth classique :
+        - login : 'account_login' (allauth) ou 'login' (auth)
+      {% endcomment %}
+      <a class="nav-link {% if auth_menu_active %}active{% endif %}" href="{% url 'login' %}">
+         <i class="fa-solid fa-user" aria-hidden="true"></i>
+         <span>Connexion</span>
+      </a>
+    </nav>
+
+    <!-- Contenu -->
+    <main class="content">
+      {% block content %}{% endblock %}
+    </main>
+
+    <!-- Pied de page -->
+    <footer class="footer">
+      <small>&copy; {{ current_year|default:2025 }} — Votre boutique</small>
+    </footer>
+
+  </div><!-- /.page-frame -->
+
+  {% block extra_js %}{% endblock %}
+</body>
+</html>
