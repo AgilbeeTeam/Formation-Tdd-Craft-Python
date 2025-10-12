@@ -17,7 +17,7 @@ class ItemsListView(ListView):
     model = Item
     context_object_name = "items"
     paginate_by = 10  # if pagination is desired
-    template_name = "buyer/catalogue.html"
+    template_name = "buyer/catalog.html"
     ordering = "name"
 
 

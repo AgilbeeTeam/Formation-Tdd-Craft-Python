@@ -3,3 +3,7 @@ Django
 sqlparse
 gunicorn
 psycopg[binary]
+behave_django
+behave
+django-selenium
+robotframework

@@ -1,0 +1,56 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>{% block title %}Admin – Boutique{% endblock %}</title>
+
+  <!-- Icônes -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+
+  <!-- CSS shop_admin -->
+  <link rel="stylesheet" href="{% static 'css/admin.css' %}">
+  {% block extra_css %}{% endblock %}
+</head>
+<body>
+
+  <div class="page-frame page-frame--admin">
+
+    <!-- Bannière (même image que la version acheteur) -->
+    <header class="banner"
+            style="background-image: url('{% static "img/bannière-illustration-gilderose.png" %}')"
+            role="img" aria-label="Bannière du site">
+      {% block banner_overlay %}{% endblock %}
+    </header>
+
+    <!-- Menu shop_admin -->
+    <nav class="main-nav" aria-label="Menu administrateur">
+      <a class="nav-link {% if request.resolver_match.url_name == 'admin_catalog' %}active{% endif %}"
+         href="{% url 'shop_admin_catalog' %}">
+        <i class="fa-solid fa-boxes-stacked" aria-hidden="true"></i>
+        <span>Catalogue</span>
+      </a>
+
+      <a class="nav-link {% if request.resolver_match.url_name == 'admin_orders' %}active{% endif %}"
+         href="{% url 'shop_admin_orders' %}">
+        <i class="fa-solid fa-clipboard-list" aria-hidden="true"></i>
+        <span>Commandes</span>
+      </a>
+
+      <a class="nav-link {% if request.resolver_match.url_name == 'admin_customers' %}active{% endif %}"
+         href="{% url 'shop_admin_customers' %}">
+        <i class="fa-solid fa-users" aria-hidden="true"></i>
+        <span>Clients</span>
+      </a>
+    </nav>
+
+    <main class="content">
+      {% block content %}{% endblock %}
+    </main>
+
+  </div><!-- /.page-frame -->
+
+  {% block extra_js %}{% endblock %}
+</body>
+</html>

@@ -1,0 +1,26 @@
+{% extends "admin_base.html" %}
+{% block title %}Admin – Tableau de bord{% endblock %}
+
+{% block content %}
+   <h1 xmlns="http://www.w3.org/1999/html">Les articles disponibles</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>Nom</th>
+                <th>sell_in</th>
+                <th>Quality</th>
+            </tr>
+        </thead>
+        <tbody
+    {% for item in items %}
+            <tr>
+                <td>{{ item.name }}</td>
+                <td>{{ item.sell_in }}</td>
+                <td>{{ item.quality }}</td>
+            </tr>
+    {% empty %}
+        <tr><td colspan="3">No articles yet.</td></tr>
+    {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

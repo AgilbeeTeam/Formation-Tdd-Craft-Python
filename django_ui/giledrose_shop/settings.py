@@ -41,6 +41,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'shop',
     'heartbeat',
+    'shop_admin',
+    'behave_django'
 ]
 
 MIDDLEWARE = [

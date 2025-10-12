@@ -1,5 +1,5 @@
 // Besoin de s'authentifier ici ...
-db.getSiblingDB('admin').auth(process.env.MONGO_INITDB_ROOT_USERNAME, process.env.MONGO_INITDB_ROOT_PASSWORD);
+db.getSiblingDB('shop_admin').auth(process.env.MONGO_INITDB_ROOT_USERNAME, process.env.MONGO_INITDB_ROOT_PASSWORD);
 
 db.createUser({
   user: process.env.MONGO_USER,
