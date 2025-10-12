@@ -364,10 +364,24 @@ Usage de Selenium (Extension Django)
 	pip install django-selenium
 
 ### Exercice 11 : 
+Mettre en place une fonctionnalité de gestion pour supprimer les articles périmés.
+
+Commencer par les tests.
+
+Note : Une page robot exemple est à disposition : tests/robot/shop_admin_customers.robot
+
+CMD : robot tests/robot/shop_admin_customers.robot
 
 
 ***Contraintes*** :
 Usage de Robot Framework 
 
-	pip install robotframework
+	pip install robotframework robotframework-seleniumlibrary 
 
+Autres framework BDD : 
+- https://lettuce.readthedocs.io/en/latest/tutorial/simple.html
+
+
+### Exercice 12 : Integration continue
+
+Le

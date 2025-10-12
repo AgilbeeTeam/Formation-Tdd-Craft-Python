@@ -34,3 +34,9 @@ pnpm-debug.log*
 /api/test/tests/approved_files/test_gilded_rose_approvals.test_gilded_rose_approvals.approved.txt
 /django_ui/db.sqlite3
 /django_ui/polls
+/django_ui/log.html
+/django_ui/output.xml
+/django_ui/report.html
+/django_ui/tests/robot/pipe
+/django_ui/tests/robot/out.log
+/django_ui/tests/robot/err.log

@@ -2,6 +2,40 @@
 {% block title %}Admin – Tableau de bord{% endblock %}
 
 {% block content %}
-  <h1>Tableau de bord</h1>
-  <p>Bienvenue dans l’espace administrateur. Gérez vos clients.</p>
+<h1>Liste des clients</h1>
+
+  <table class="customers-table">
+    <thead>
+      <tr>
+        <th>Nom</th>
+        <th>Adresse</th>
+        <th>Total des achats</th>
+        <th>Panier</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for c in buyers %}
+        <tr>
+          <td>{{ c.name }}</td>
+          <td>{{ c.address|default:"—" }}</td>
+          <td>
+            {{ c.total_achats|default:0|floatformat:2 }} €
+          </td>
+          <td class="cart-state">
+            {% if c.cart_count|default:0 > 0 %}
+              <span class="badge badge-full">
+                <i class="fa-solid fa-cart-shopping"></i> Plein
+              </span>
+            {% else %}
+              <span class="badge badge-empty">
+                <i class="fa-regular fa-circle"></i> Vide
+              </span>
+            {% endif %}
+          </td>
+        </tr>
+      {% empty %}
+        <tr><td colspan="4">Aucun client pour le moment.</td></tr>
+      {% endfor %}
+    </tbody>
+  </table>
 {% endblock %}

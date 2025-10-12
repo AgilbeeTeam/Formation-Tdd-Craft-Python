@@ -2,7 +2,19 @@
 {% block title %}Admin – Tableau de bord{% endblock %}
 
 {% block content %}
+
+<!-- Bouton d'action -->
    <h1 xmlns="http://www.w3.org/1999/html">Les articles disponibles</h1>
+
+    <div class="catalog-actions">
+        <form action="{% url 'shop_admin_update_quality' %}" method="post" style="display:inline;">
+            {% csrf_token %}
+            <button type="submit" class="btn btn-blue">
+                <i class="fa-solid fa-sync-alt"></i> Mettre à jour la qualité
+            </button>
+        </form>
+    </div>
+
     <table>
         <thead>
             <tr>
@@ -23,4 +35,18 @@
     {% endfor %}
         </tbody>
     </table>
+
+
+    <hr>
+
+      <!-- Formulaire d'ajout -->
+      <h2>Ajouter un nouvel article</h2>
+      <form action="{% url 'shop_admin_add_item' %}" method="post" class="add-form">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" class="btn btn-green">
+          <i class="fa-solid fa-plus"></i> Ajouter
+        </button>
+      </form>
+
 {% endblock %}
