@@ -20,8 +20,7 @@ La Stack VueJS, FastAPI, MongoDB
 
 La Stack Django, Postgresql 
     
-    docker compose up -d --force-recreate db db-ui
-    docker compose up --watch 
+    docker compose up -d db-postgresql
 
     python manage.py migrate
     python manage.py createsuperuser --username=admin --email=admin@example.com
@@ -384,4 +383,7 @@ Autres framework BDD :
 
 ### Exercice 12 : Integration continue
 
-Le
+Objectif : Mettre en place un pipe de compilation à chaque modification
+
+1. Configurer votre git (ou github) (tuto : https://editions-celine-et-nico.com/fork-et-rebase-dun-projet-git/)
+2. 

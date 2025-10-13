@@ -138,13 +138,6 @@ services:
     image: jenkins/jenkins
     ports:
        - "8080:8080"
-       - "5000:5000"
-       - "5005:5005"
-    networks:
-      network_web:
-        aliases:
-          - jenkins
-
 
 networks:
   network_db:
