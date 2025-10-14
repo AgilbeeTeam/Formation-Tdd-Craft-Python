@@ -7,8 +7,8 @@ Objectif : TDD, Clean Code, Architecture, Refactoring
 
 ### les outils à installer : 
 
-> pip install -r ./django_ui/requirements.txt
-> pip install -r ./api/requirements.txt
+	pip install -r ./django_ui/requirements.txt
+	pip install -r ./api/requirements.txt
 
 
 ### Les commandes docker à lancer pour initier son environnement de dev
@@ -386,4 +386,5 @@ Autres framework BDD :
 Objectif : Mettre en place un pipe de compilation à chaque modification
 
 1. Configurer votre git (ou github) (tuto : https://editions-celine-et-nico.com/fork-et-rebase-dun-projet-git/)
-2. 
+2. configurer un pipe jenkins pour lancer tous les tests écrits jusqu'à maintenant.
+3. Ajuster le pipe pour déployer dans les containers Docker
