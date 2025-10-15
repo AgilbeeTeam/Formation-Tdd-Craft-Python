@@ -381,7 +381,7 @@ Autres framework BDD :
 - https://lettuce.readthedocs.io/en/latest/tutorial/simple.html
 
 
-### Exercice 12 : Integration continue
+### Exercice 12 : Integration continue (optionnel)
 
 Objectif : Mettre en place un pipe de compilation à chaque modification
 
