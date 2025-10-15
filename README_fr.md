@@ -22,9 +22,10 @@ La Stack Django, Postgresql
     
     docker compose up -d db-postgresql
 
+    cd django_ui
     python manage.py migrate
     python manage.py createsuperuser --username=admin --email=admin@example.com
-    python manage.py loaddata catalogue.json
+    python manage.py loaddata ./tests/fixtures/catalog.json
     
     python manage.py runserver
 
