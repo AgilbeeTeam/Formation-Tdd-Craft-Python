@@ -8,7 +8,7 @@ Objectif : TDD, Clean Code, Architecture, Refactoring
     python -m venv .venv
     source .venv/bin/activate
 
-### les outils à installer : 
+### les outils à installer (dans votre environnement virtuel) : 
 
 	pip install -r ./django_ui/requirements.txt
 	pip install -r ./api/requirements.txt
