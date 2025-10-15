@@ -10,6 +10,7 @@ Objectif : TDD, Clean Code, Architecture, Refactoring
 	pip install -r ./django_ui/requirements.txt
 	pip install -r ./api/requirements.txt
 
+    Docker Desktop à intaller : https://www.docker.com/products/docker-desktop/ 
 
 ### Les commandes docker à lancer pour initier son environnement de dev
 
