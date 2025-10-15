@@ -21,7 +21,7 @@ Objectif : TDD, Clean Code, Architecture, Refactoring
 La Stack VueJS, FastAPI, MongoDB 
    
     docker compose up -d --force-recreate db db-ui
-    docker compose up --watch api ui
+    docker compose up --watch api vuejs-ui
 
 La Stack Django, Postgresql 
     
