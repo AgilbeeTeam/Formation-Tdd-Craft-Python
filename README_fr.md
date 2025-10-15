@@ -5,7 +5,7 @@ Objectif : TDD, Clean Code, Architecture, Refactoring
 
 ## Configuration de son environnement
 
-### les outils à installer : 
+### les outils à installer (dans un environnement virtuel Python 'venv'): 
 
 	pip install -r ./django_ui/requirements.txt
 	pip install -r ./api/requirements.txt
