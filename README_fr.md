@@ -5,6 +5,9 @@ Objectif : TDD, Clean Code, Architecture, Refactoring
 
 ## Configuration de son environnement
 
+    python -m venv .venv
+    source .venv/bin/activate
+
 ### les outils à installer : 
 
 	pip install -r ./django_ui/requirements.txt
@@ -23,9 +26,11 @@ La Stack Django, Postgresql
     
     docker compose up -d db-postgresql
 
+dans le répertoire django_ui : 
+
     python manage.py migrate
     python manage.py createsuperuser --username=admin --email=admin@example.com
-    python manage.py loaddata catalogue.json
+    python manage.py loaddata ./tests/fixtures/catalog.json
     
     python manage.py runserver
 
