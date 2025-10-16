@@ -139,7 +139,7 @@ Implémenter une fonction qui calcul le score **TOTAL** d'une partie de Bowling
 
 **Les règles de calcul** :
 - Le jeu se découpe en **10 manches** (“frame”)
-- A chaque partie, le joueur a **2 jets** pour faire tomber les 10 quilles.
+- A chaque manche, le joueur a **2 jets** pour faire tomber les 10 quilles.
 - Le score pour la manche est le total du nombre de quilles tombées, plus des bonus pour les Strikes et les Spares.
 
 - Un Spare arrive lorsque le joueur fait tomber les 10 quilles en 2 fois. 

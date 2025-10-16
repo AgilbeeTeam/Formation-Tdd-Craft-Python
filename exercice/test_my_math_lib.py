@@ -1,6 +1,6 @@
 import unittest
 
-import my_math_lib
+from exercice import my_math_lib
 
 
 class MyTestCase(unittest.TestCase):
