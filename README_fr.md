@@ -108,7 +108,16 @@ Implementer les tests et les correctifs pour respecter le BICEPs
 - Self-Validating (**S**) :  Le test doit se valider lui-même (succès/échec clair, sans lecture manuelle d’un log ou d’un print).
 - Timely (**T**) : Le test doit être écrit au bon moment, idéalement avant le code de production (TDD), ou du moins juste après.
 
-- Rédiger les tests et le code permettant de lire des indices N d'un fichier et écrire le résultat dans le même fichier
+Rédiger les tests et le code permettant de lire des indices N d'un fichier et écrire le résultat dans le même fichier
+
+On a 4 parties :
+1. Une lecture de fichier (que ce passe t il si vide ? absent ? binaire ?)
+2. Une vérification que les données lus sont des entiers
+3. Le calcule de la suite (déjà faite)
+4. L'écriture dans le fichier des données
+
+=> On va avoir plusieurs tests unitaires pour chacune des parties
+=> Ici, le FIRST doit bien être vérifié pour s'assurer que les tests et le code fonctionne sur la machine de quelqu'un d'autre ou en production.
 
 ### Exercice 4 : Mes premiers refactoring de code
 
@@ -169,16 +178,6 @@ Références
 - mockito-python : (inspiré de la bibliothèque Java Mockito) https://mockito-python.readthedocs.io/en/latest/
 
 ### Exercice 6 : 
-
-A partir Gilderose shop, metter en place un appel API fournisseur pour faire un réapprovisionner la boutique.
-
-***Contraintes*** : 
-
-***Tips*** : pouvez mettre en place un réassort automatique avec un design pattern de type Observeur et / ou Command
-
-
-### Exercice 7 : 
-
 Bonjour et bienvenue dans l'équipe de la Gilded Rose.
 
 Comme vous le savez, notre petite taverne située à proximité d'une cité importante est dirigée par l'aubergiste amicale Allison.
@@ -188,6 +187,22 @@ Malheureusement, la qualité de nos marchandises se dégrade constamment à l'ap
 
 Un système a été mis en place pour mettre à jour notre inventaire.
 Il a été développé par Leeroy, une personne pleine de bon sens qui est partie pour de nouvelles aventures.
+
+
+A partir Gilderose shop, metter en place un appel API fournisseur pour faire un réapprovisionner la boutique.
+
+ou
+
+Mettre en place un Mock pour remplacer la lecture du fichier dans l'exercice 3
+
+
+***Contraintes*** : 
+
+***Tips*** : pouvez mettre en place un réassort automatique avec un design pattern de type Observeur et / ou Command
+
+
+### Exercice 7 : 
+
 
 Votre mission est d'ajouter une nouvelle fonctionnalité à notre système pour que nous puissions commencer à vendre un nouveau type de produits.
 
