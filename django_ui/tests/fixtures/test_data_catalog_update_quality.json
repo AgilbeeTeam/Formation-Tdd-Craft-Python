@@ -1,0 +1,17 @@
+[
+    {
+        "model": "shop.Item",
+        "pk": 1,
+        "fields": { "name" : "Article A", "sell_in" : 10, "quality" : 20 }
+    },
+    {
+        "model": "shop.Item",
+        "pk": 2,
+        "fields": { "name"  : "Article B", "sell_in" : 5, "quality" : 7 }
+    },
+    {
+        "model": "shop.Item",
+        "pk": 3,
+        "fields": { "name"  : "Article C", "sell_in" : 3, "quality" : 1 }
+    }
+]

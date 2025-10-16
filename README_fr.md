@@ -225,7 +225,7 @@ Attendez, ça devient intéressant :
 
 
 A partir Gilderose shop, dans l'application coté marchand, ajouter un service pour mettre à jour le catalogue 
-SAchez que la class  et la méthode exist déjà mais on ne sait pas si elle répond au spec.
+Sachez que la classe  et la méthode exist déjà mais on ne sait pas si elle répond au spec.
 
 ***Contraintes*** : 
 Usage de Teardown et setup pour charger et nettoyer la base de donnée de test.
@@ -377,12 +377,17 @@ pour lancer le test :
 
 ### Exercice 10 : Mise en place d'une nouvelle fonctionnalité (phase 2 - test de l'interface)
 
-tester la mise a jour sur l'action de mettre à jour de UpdateQuality dans l'interface de l'admin.
+1. Implementer la mise a jour sur l'action de mettre à jour de UpdateQuality dans l'interface de l'admin.
+2. Metter en place une fonctionnalité de nettoyage du catalogue qui supprime les articles qui ont un sell_in <= 0
 
 ***Contraintes*** : 
-Usage de Selenium (Extension Django) 
+1. Usage de Selenium (Extension Django) 
 
 	pip install django-selenium
+
+	python manage.py test tests.test_admin_catalog_selenium
+
+2. TDD et ATDD avec Selenium.
 
 ### Exercice 11 : 
 Mettre en place une fonctionnalité de gestion pour supprimer les articles périmés.
@@ -405,8 +410,9 @@ Autres framework BDD :
 
 ### Exercice 12 : Integration continue (optionnel)
 
-Objectif : Mettre en place un pipe de compilation à chaque modification
+Objectif : Mettre en place un pipeline de compilation à chaque modification
 
 1. Configurer votre git (ou github) (tuto : https://editions-celine-et-nico.com/fork-et-rebase-dun-projet-git/)
-2. configurer un pipe jenkins pour lancer tous les tests écrits jusqu'à maintenant.
-3. Ajuster le pipe pour déployer dans les containers Docker
+2. configurer un pipeline jenkins pour lancer tous les tests écrits jusqu'à maintenant.
+3. Ajuster le pipeline pour déployer dans les containers Docker la solution Django.
+

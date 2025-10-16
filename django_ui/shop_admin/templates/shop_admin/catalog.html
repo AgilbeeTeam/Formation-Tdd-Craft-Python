@@ -7,9 +7,9 @@
    <h1 xmlns="http://www.w3.org/1999/html">Les articles disponibles</h1>
 
     <div class="catalog-actions">
-        <form action="{% url 'shop_admin_update_quality' %}" method="post" style="display:inline;">
+        <form action="{% url 'shop_admin_update_quality' %}" method="post" style="display:inline;" >
             {% csrf_token %}
-            <button type="submit" class="btn btn-blue">
+            <button type="submit" class="btn btn-blue" id="shop_admin_update_quality_button">
                 <i class="fa-solid fa-sync-alt"></i> Mettre à jour la qualité
             </button>
         </form>
@@ -23,7 +23,7 @@
                 <th>Quality</th>
             </tr>
         </thead>
-        <tbody
+        <tbody id="shop_admin_catalog_table">
     {% for item in items %}
             <tr>
                 <td>{{ item.name }}</td>
